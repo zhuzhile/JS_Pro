@@ -2,21 +2,19 @@
 <html>
 <head>
 	<title></title>
-	<!-- <script type="text/javascript">            // 在DOM解析之前执行
+	<!-- <script type="text/javascript">            // ?在DOM解析之前执行
 		let div_dom = document.getElementById("main");
 		console.log(div_dom.nodeType);
 	</script> -->
-
-	<!-- <script type="text/javascript" src = "Script_Test.js" async ></script> -->			//可能会在DOMContentLoaded触发前,或者load之前
-	<!-- <script type="text/javascript" src = "Script_Test.js" defer ></script> -->         //在DOMContentLoaded触发前
+	<!-- // 可能会在DOMContentLoaded触发前,或者load之前 -->
+	<!-- <script type="text/javascript" src = "Script_Test.js" async ></script> -->	
+	<!-- // 在DOMContentLoaded触发前		 -->
+	<!-- <script type="text/javascript" src = "Script_Test.js" defer ></script> -->        
 </head>
 <body>
 	<div id = "main"> hello </div>
 
-	<!-- <script type="text/javascript">
-		let div_dom = document.getElementById("main");
-		console.log(div_dom.nodeType);
-	</script> -->
+	<script type="text/javascript" src = "Script_Test.js"></script>
 
 </body>
 </html>
