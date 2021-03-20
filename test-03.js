@@ -23,3 +23,15 @@ div_dom.addEventListener('click', function(event){
 div_dom.addEventListener('click', function(event){
 	console.log("捕获阶段", event.currentTarget);
 },true);
+
+
+
+// 事件委托(利用冒泡阶段)
+
+div_dom.addEventListener('click', function(event){
+	// const arr_li = ['component01', 'component02', 'component03'];
+
+	alert(event.target.id);
+}, false)
+
+
