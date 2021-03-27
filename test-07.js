@@ -1,4 +1,5 @@
 var url = 'http://jsonplaceholder.typicode.com/albums/6';
+let name = "behippo";
 
 let getData = function (){
     return new Promise(function(resolve, reject){
@@ -27,3 +28,5 @@ getData().then(function(success){
 }, function(fail){
     console.error(fail)
 })
+
+export  {name}
