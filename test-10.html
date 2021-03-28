@@ -2,26 +2,58 @@
 <html>
 <head>
 	<title>	Vue框架复习</title>
+	<style type="text/css">
+		@import './center.css';
+	</style>
 </head>
 <body>
 	<div id = "app">
-			<button-counter :title = "message" @click = '$emit("show")' ><button-counter>
+			<buttonCounter :title = "message" @show-button = 'showSom' >
+				<template #default = {count}>
+					{{notation}} - {{count}}
+				</template>
+			</buttonCounter>
+			<input v-model = 'notation' :class = 'classObj'>
+			<p></p>
+			<todo-list :todos = 'todos'>
+				<template #todo = {todo}>
+					<span v-if = "todo.id > 1"> {{todo.text}}</span>
+				</template>
+			</todo-list>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
 	<script>
-		
-		Vue.component('button-counter',{
-			props:['title'],
+
+		Vue.component('todo-list',{
+			props:['todos'],
 			data(){
 				return {
-					count: 0
+
 				}
 			},
 			template:`
-				<button >
+				<ul>
+					<li v-for = "item in todos" :key = "item.id + item.text">
+						<slot name = 'todo' :todo = 'item' ></slot>
+					</li>
+				</ul>
+
+			`
+		})
+		
+		Vue.component('buttoncounter',{
+			props:['title'],
+			data(){
+				return {
+					count: 100
+				}
+			},
+			template:`
+				<button @click = "$emit('show-button')">
 					{{title}}
+					<slot :count = 'count'></slot>			
 				</button>
 
 			`
@@ -30,17 +62,29 @@
 		let app = new Vue({
 			el:'#app',
 			data:{
-				message:"hello world"
+				message:"hello",
+				notation: '',
+				todos:[
+				{id:1, text: '1'},
+				{id:2, text: '2'},
+				{id:3, text: '3'}],
+				isCenter: true
 			},
 
 			watch:{
-
+				notation(){
+					this.isCenter = false;
+				}
 			},
 			computed:{
-
+				classObj(){
+					if(this.isCenter){
+						return {center: true};
+					}
+				}
 			},
 			methods:{
-				show(){
+				showSom(){
 					console.log('子组件触发父组件方法');
 				}
 			}
