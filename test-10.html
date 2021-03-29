@@ -87,8 +87,7 @@
 	    router.beforeEach(function(to, from, next){
 	    	if(to.name === 'bar' ){
 	    		console.log('hi ! king in the north');
-	    		next({path:'/', query:{id : 1}})
-	    		// next();
+	    		next();
 	    	}else{
 	    		next();
 	    	}
