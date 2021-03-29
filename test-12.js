@@ -13,7 +13,6 @@ p.then(function(res){
 		})
 
  
- // ------
 
 
  let p = Promise.race([fetch("https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"),
