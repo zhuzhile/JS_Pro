@@ -106,22 +106,6 @@ Function.prototype.bind2 = function (context) {
 }
 
 
-// 1. 考虑返回函数使用new的特殊情况
-// 2. 闭包使用 
-
-Function.prototype.myBind = function(context){
-	let self = this;
-	let arg = Array.prototype.slice.call(arguments, 1);
-
-	if(typeof this !== 'object'){
-		throw new Error("类型不匹配");
-	}
-
-	return function(){
-		let brg = [...arguments];
-		self.apply(this instanceof self ? this:context, arg.concat(brg));
-	}
-}
 
 
 
