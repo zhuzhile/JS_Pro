@@ -55,4 +55,78 @@ let show = showLog.myBind(person, "is handsome");
 show("and smart");
 
 
+// new实现
+// 1. 建立新的this
+// 2. 将函数的原型属性以及各种属性赋值
+// 3. 返回this
+
+// 函数如果返回的是基本类型
+
+function Person(name, age){
+	this.name = name;
+	this.age = age;
+}
+
+Person.prototype.sayName = function (){
+	console.log(this.name)
+};
+
+function objFactory(){
+	let obj = new Object();
+	const Constructor = [].shift.call(arguments) 
+	obj.__proto__ =  Constructor.prototype;
+	let ret = Constructor.apply(obj, arguments);
+
+	return typeof ret === 'object' ? ret : obj;
+}
+
+let person = objFactory(Person);
+
+
+// bind具体实现
+Function.prototype.bind2 = function (context) {
+
+    if (typeof this !== "function") {
+      throw new Error("Function.prototype.bind - what is trying to be bound is not callable");
+    }
+
+    var self = this;
+    var args = Array.prototype.slice.call(arguments, 1);
+
+    var fNOP = function () {};
+
+    var fBound = function () {
+        var bindArgs = Array.prototype.slice.call(arguments);
+        return self.apply(this instanceof fNOP ? this : context, args.concat(bindArgs));
+    }
+
+    fNOP.prototype = this.prototype;
+    fBound.prototype = new fNOP();
+    return fBound;
+}
+
+
+// 1. 考虑返回函数使用new的特殊情况
+// 2. 闭包使用 
+
+Function.prototype.myBind = function(context){
+	let self = this;
+	let arg = Array.prototype.slice.call(arguments, 1);
+
+	if(typeof this !== 'object'){
+		throw new Error("类型不匹配");
+	}
+
+	return function(){
+		let brg = [...arguments];
+		self.apply(this instanceof self ? this:context, arg.concat(brg));
+	}
+}
+
+
+
+
+
+
+
 

@@ -7,57 +7,93 @@
 	</style>
 </head>
 <body>
-	<div id = "app">
-			<buttonCounter :title = "message" @show-button = 'showSom' >
-				<template #default = {count}>
-					{{notation}} - {{count}}
-				</template>
-			</buttonCounter>
-			<input v-model = 'notation' :class = 'classObj'>
-			<p></p>
-			<todo-list :todos = 'todos'>
-				<template #todo = {todo}>
-					<span v-if = "todo.id > 1"> {{todo.text}}</span>
-				</template>
-			</todo-list>
+	<div id = "app">		
+			<button-counter :title = 'message'></button-counter>	
+			<router-view></router-view>
 	</div>
+
 	<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
-	<script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 
-		Vue.component('todo-list',{
+	<script>
+		const Foo = { template: '<button @click = "toBar">click</button>', methods:{
+			toBar(event){
+				console.log(event);
+				this.$router.push('/bar')
+			}
+		} }
+		const Bar = { template: '<div>bar</div>' }
+
+
+		Vue.component('todoList',{
 			props:['todos'],
 			data(){
 				return {
 
 				}
 			},
+			methods:{
+				goToButton(event){
+					console.log(event);
+					this.$router.push('/button-counter');
+				}
+			},
 			template:`
 				<ul>
-					<li v-for = "item in todos" :key = "item.id + item.text">
-						<slot name = 'todo' :todo = 'item' ></slot>
+					<li v-for = "item in todos" :key = "item.id + item.text" @click = "goToButton">
+						<slot name = 'todo' :todo = 'item' > {{item.text}} </slot>
 					</li>
 				</ul>
 
 			`
 		})
 		
-		Vue.component('buttoncounter',{
+		Vue.component('button-counter',{
 			props:['title'],
 			data(){
 				return {
 					count: 100
 				}
 			},
+			methods:{
+				goBack(){
+					this.$router.push("/");
+				}
+			},
 			template:`
-				<button @click = "$emit('show-button')">
+				<button @click = "goBack">
 					{{title}}
-					<slot :count = 'count'></slot>			
+					<slot :count = 'count'> {{count}}</slot>			
 				</button>
 
 			`
 		})
+
+		const routes = [
+  						{ path: '/', component: Foo },
+  						{ path: '/bar', component: Bar , name: 'bar'}
+					   ]
+
+		// 3. 创建 router 实例，然后传 `routes` 配置
+		// 你还可以传别的配置参数, 不过先这么简单着吧。
+	    const router = new VueRouter({
+ 						 routes // (缩写) 相当于 routes: routes
+					    })
+
+
+	
+	    router.beforeEach(function(to, from, next){
+	    	if(to.name === 'bar' ){
+	    		console.log('hi ! king in the north');
+	    		next({path:'/', query:{id : 1}})
+	    		// next();
+	    	}else{
+	    		next();
+	    	}
+	    })
+
 
 		let app = new Vue({
 			el:'#app',
@@ -70,11 +106,15 @@
 				{id:3, text: '3'}],
 				isCenter: true
 			},
-
+			router,
 			watch:{
 				notation(){
 					this.isCenter = false;
 				}
+			},
+			componets:{
+				Foo,
+				Bar
 			},
 			computed:{
 				classObj(){
@@ -92,3 +132,8 @@
 	</script>
 </body>
 </html>
+
+
+
+
+
