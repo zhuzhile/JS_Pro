@@ -5,147 +5,135 @@
 	<style type="text/css">
 		.main-content{
 			display: flex;                                   
-			/*flex-wrap: wrap-reverse;*/
-			color: yellow;
-			flex-direction: column-reverse;
+			color: pink;
+			flex-direction: column;
 		}
-		.part1{
-			display: flex;
-			height: 100px;
-			width: 100px;
-			background-color: red;
-			border-radius: 50%;
-			justify-content: center;
-			align-items: center;
 
+		.main-content div::first-line{
+			color: red;
 		}
-		.part2{
-			display: flex;
-			border-radius: 50%;
-			height: 100px;
-			width: 100px;
-			background-color: pink;
-			justify-content: center;
-			align-items: center;
+
+		.main-content div h3::first-letter{
+			font-size: 32px;
+			font-weight: bolder;
 		}
 	</style>
 </head>
 <body>
 	<div class = "main-content">
-		<div class = "part1"> part1 </div>
-		<div class = "part2"> part2 </div>
+		<div class = "part1"> 
+			<h3> 一.无继承性的属性 </h3>
+				1.display：规定元素应该生成的框的类型
 
-		<div class = "part3"> 
+				2.文本属性：vertical-align：垂直文本对齐
 
-一.无继承性的属性
-1.display：规定元素应该生成的框的类型
+				text-decoration：规定添加到文本的装饰
 
-2.文本属性：vertical-align：垂直文本对齐
+				text-shadow：文本阴影效果
 
-text-decoration：规定添加到文本的装饰
+				white-space：空白符的处理
 
-text-shadow：文本阴影效果
+				unicode-bidi：设置文本的方向
 
-white-space：空白符的处理
+				3.盒子模型的属性：width，height，margin，margin-top，margin-right，margin-bottom，margin-left，border，border-style，border-top（right，bottom，left）-style
 
-unicode-bidi：设置文本的方向
+				border-top（right，bottom，left）-width，border-top（right，bottom，left）-color，border-top，border-right，border-bottom，border-left，
 
-3.盒子模型的属性：width，height，margin，margin-top，margin-right，margin-bottom，margin-left，border，border-style，border-top（right，bottom，left）-style
+				padding，padding-top，padding-right，padding-bottom，padding-left
 
-border-top（right，bottom，left）-width，border-top（right，bottom，left）-color，border-top，border-right，border-bottom，border-left，
+				4.背景属性：background，background-color，background-image，background-repeat，background-position，background-attachment
 
-padding，padding-top，padding-right，padding-bottom，padding-left
+				5.定位属性：float，clear，position，top，right，bottom，left，min-width，min-height，max-width，max-height，overflow，clip，z-index
 
-4.背景属性：background，background-color，background-image，background-repeat，background-position，background-attachment
+				6.生成内容属性：content，content-seset，content-increment
 
-5.定位属性：float，clear，position，top，right，bottom，left，min-width，min-height，max-width，max-height，overflow，clip，z-index
+				7.轮廓样式属性：outline，outline-style，outline-width，outline-color
 
-6.生成内容属性：content，content-seset，content-increment
+				8.页面样式属性：size，page-break-before，page-break-after
 
-7.轮廓样式属性：outline，outline-style，outline-width，outline-color
+				9.声音样式属性：pause，pause-before，pause-after，cue，cue-before，cue-after，play-during
+		</div>
+		<div class = "part2"> 
+			<h3>二.有继承性的属性</h3>>
 
-8.页面样式属性：size，page-break-before，page-break-after
+				1.字体系列属性：font：组合字体
 
-9.声音样式属性：pause，pause-before，pause-after，cue，cue-before，cue-after，play-during
+				font-family：规定元素的字体系列
 
-二.有继承性的属性
+				font-weight：设置字体的粗细
 
-1.字体系列属性：font：组合字体
+				font-size：设置字体的尺寸
 
-font-family：规定元素的字体系列
+				font-style：设置字体的风格
 
-font-weight：设置字体的粗细
+				font-variant：设置小型大写字母的字体显示文本，这意味着所有的小写字母均会被转换为大写，但是所有使用小型大写字体的字母与其余文本相比，其字体尺寸更小
 
-font-size：设置字体的尺寸
+				font-stretch：对当前的font-family进行伸缩变形，所有主流浏览器都不支持
 
-font-style：设置字体的风格
+				font-size-adjust：为某个元素规定一个aspect值，这样就可以保持首选字体的x-height
 
-font-variant：设置小型大写字母的字体显示文本，这意味着所有的小写字母均会被转换为大写，但是所有使用小型大写字体的字母与其余文本相比，其字体尺寸更小
+				2.文本系列属性：text-indent：文本缩进
 
-font-stretch：对当前的font-family进行伸缩变形，所有主流浏览器都不支持
+				text-align：文本水平对齐
 
-font-size-adjust：为某个元素规定一个aspect值，这样就可以保持首选字体的x-height
+				line-height：行高
 
-2.文本系列属性：text-indent：文本缩进
+				word-spacing：增加或减少文单词间的空白（即字间隔）
 
-text-align：文本水平对齐
+				letter-spacing：增加或减少字符间的空白（字符间距）
 
-line-height：行高
+				text-transform：控制文本大小写
 
-word-spacing：增加或减少文单词间的空白（即字间隔）
+				direction：规定文本的书写方向
 
-letter-spacing：增加或减少字符间的空白（字符间距）
+				color：文本颜色
 
-text-transform：控制文本大小写
+				3.元素可见性：visibility
 
-direction：规定文本的书写方向
+				4.表格布局属性：caption-side，border-collapse，border-spacing，empty-cells，table-layout
 
-color：文本颜色
+				5.列表布局属性：list-style，list-style-image，list-style-type，list-style-position
 
-3.元素可见性：visibility
+				6.生产内容属性：quotes
 
-4.表格布局属性：caption-side，border-collapse，border-spacing，empty-cells，table-layout
+				7.光标属性：cursor
 
-5.列表布局属性：list-style，list-style-image，list-style-type，list-style-position
+				8.页面样式属性：page，page-break-inside，Windows，orphans
 
-6.生产内容属性：quotes
+				9.声音样式属性：speak、speak-punctuation、speak-numeral、speak-header、speech-rate、volume、voice-family、pitch、pitch-range、stress、richness、、azimuth、elevation
 
-7.光标属性：cursor
+				三.所有元素可继承属性
 
-8.页面样式属性：page，page-break-inside，Windows，orphans
+				1.元素可见性：visibility
 
-9.声音样式属性：speak、speak-punctuation、speak-numeral、speak-header、speech-rate、volume、voice-family、pitch、pitch-range、stress、richness、、azimuth、elevation
+				2.光标属性：cursor
 
-三.所有元素可继承属性
+				四.内联元素可以继承的属性
 
-1.元素可见性：visibility
+				1.字体系列属性
 
-2.光标属性：cursor
+				2.除text-indent，text-align之外的文本系列属性
 
-四.内联元素可以继承的属性
+				五.块级元素可以继承的属性
 
-1.字体系列属性
-
-2.除text-indent，text-align之外的文本系列属性
-
-五.块级元素可以继承的属性
-
-1.text-indent，text-align
+				1.text-indent，text-align
 		</div>
 
-		<div>
-			Css权重选择
+		<div class = "part3"> 
+			<h3>三 Css权重选择</h3>
+
 			根据 W3 标准中的规定, css selector 分为 4 种 type: a, b, c, d. 他们的数目计算规则为:
 
 			a: 如果 css 属性声明是写在 style=“” 中的, 则数目为 1, 否则为 0
 			b: id 选择器的数目
 			c: class 选择器, 属性选择器(如 type=“text”), 伪类选择器(如: ::hover) 的数目
 			d: 标签名(如: p, div), 伪类 (如: :before)的数目
-在比较不同 css selector 的权重时, 按照 a => b => c => d 的顺序进行比较.
+			在比较不同 css selector 的权重时, 按照 a => b => c => d 的顺序进行比较.
 
-由第一个 selector type a 的计算规则可知: 写在 html 代码 style 属性中的 css 相较写在 css 选择器中的 css 属性具有最高的优先级.
+			由第一个 selector type a 的计算规则可知: 写在 html 代码 style 属性中的 css 相较写在 css 选择器中的 css 属性具有最高的优先级.
 
-而 id selector (b) 相较 class selector (c) 有更高的优先级. 这也和我们平时的经验相吻合.
+			而 id selector (b) 相较 class selector (c) 有更高的优先级. 这也和我们平时的经验相吻合.
+
 		</div>
 	</div>
 </body>
