@@ -1,0 +1,61 @@
+.sizeRule {
+  width: 100px;
+  height: 100px;
+}
+
+.content {
+  /*清除浮动2*/
+  /*overflow: hidden;*/
+  display: flex;
+  flex-direction: column;
+  background-color: pink;
+  border-radius: 19px;
+  text-align: center;
+  border: 1px solid orange;
+}
+
+/*清除浮动 1*/
+/*.content::after{
+  clear:both; 
+  content: ' ';
+  display: block;
+}*/
+
+.content-next{
+  height:100px;
+  /*width:;*/
+  text-align: center;
+  color: #fe0;
+}
+
+.content-next::first-letter{
+  font-weight: bolder;
+}
+
+
+.content-child{
+    border:1px dotted orange;
+}
+
+.part1 {
+/*  position: absolute;
+  top: 100px;
+  left: 400px;*/
+  float: left;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.part2 {
+  float: left;
+/*  position: absolute;
+  top: 100px;
+  left: 200px;*/
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+

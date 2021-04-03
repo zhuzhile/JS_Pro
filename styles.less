@@ -1,0 +1,24 @@
+@width: 100px;
+@height: 100px;
+
+.sizeRule{
+	width: @width;
+	height: @height;
+}
+
+.content{
+	.sizeRule;
+	background-color: pink;
+	border-radius: 19px;
+	border: 1px solid orange;
+	.part1{
+		.sizeRule;
+		background-color: red;
+		border-radious: 50%;
+	}
+	.part2{
+		.sizeRule;
+		background-color: yellow;
+		border-radious: 50%;
+	}
+}
