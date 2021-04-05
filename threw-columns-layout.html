@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    	html,body{
+    		height: 100%;
+    		margin:0;	
+    		padding: 0;
+    	}
+
+
+  		.container{
+  			height: 100%;
+  			display: flex;
+  		}
+
+  		.left{
+  			height:100%;
+  			width: 100px;
+  			background-color: yellow;
+  			flex-shrink: 0;
+  			order: -1;
+  		}
+
+  		.main{
+  			height: 100%;
+  			background-color: green;
+  			flex-grow: 1;
+  			margin:0 20px;
+  		}
+
+  		.right{
+  			height: 100%;
+  			width: 200px;
+  			background-color: pink;
+  			flex-shrink: 0;
+  		}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+		<div class="main"></div>
+		<div class="left"></div>
+		<div class="right"></div>
+    </div>
+</body>
+</html>
