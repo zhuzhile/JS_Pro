@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
+	<title>flex布局</title>
     <style>
     	html,body{
     		height: 100%;
     		margin:0;	
     		padding: 0;
     	}
-
 
   		.container{
   			height: 100%;
@@ -44,5 +44,243 @@
 		<div class="left"></div>
 		<div class="right"></div>
     </div>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<title>流式布局</title>
+	<style type="text/css">
+		html, body{
+			margin:0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		.container{
+			height: 100%;
+			width: 100%;
+			overflow: hidden;
+		}
+
+		.content{
+			//margin-left: 240px;
+			//margin-right: 120px;
+			height: 100%;
+			overflow: hidden;
+			background-color: green;
+		}
+
+		.left{
+			float:left;
+			width:220px;
+			height: 100%;
+			background-color: yellow;
+		}
+
+		.right{
+			float: right;
+			width: 100px;
+			height: 100%;
+			background-color: pink;			
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class = "container">
+		
+		<div class = "left"></div>
+		<div class = "right"></div>
+		<div class = "content"></div>
+	</div>
+</body>
+</html>
+ -->
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<title>双飞翼布局</title>
+	<style type="text/css">
+		.container{
+			overflow: hidden;
+			height: 300px;
+		}
+
+		.container > div{
+			float:left;
+		}
+
+		.content{
+			width: 100%;
+			height: 300px;
+		}
+
+		.middle{
+			margin-left:240px;
+			margin-right: 120px;
+			height: 300px;
+			background-color: green;
+		}
+
+		.left{
+			margin-left: -100%;
+			width:220px;
+			height: 300px;
+			background-color: yellow;
+		}
+
+		.right{
+			margin-left: -100px;
+			width: 100px;
+			height: 300px;
+			background-color: pink;			
+		}
+	</style>
+</head>
+<body>
+	<div class = "container">
+		<div class = "content">
+			<div class = "middle">爱的色放</div>
+		</div>
+		<div class = "left">爱的方式发</div>
+		<div class = "right">啊打发</div>
+	</div>
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<title>圣杯布局</title>
+	<style type="text/css">
+
+		.container{
+			margin-left: 240px;
+			margin-right: 120px;
+		}
+
+		.container > div{
+			float:left;
+		}
+
+		.content{
+			width: 100%;
+			height: 300px;
+			background-color: green;
+		}
+
+		.left{
+			width:220px;
+			height: 300px;
+			margin-left: -100%;
+			position: relative;
+			left: -240px;
+			background-color: yellow;
+		}
+
+		.right{
+			width: 100px;
+			height: 300px;
+			margin-left: -100px;
+			background-color: pink;		
+			position: relative;
+			right: -120px;	
+		}
+
+		.container::after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+
+	</style>
+</head>
+<body>
+	<div class = "container">
+		<div class = "content">啊范德萨发</div>
+		<div class = "left">大法师</div>
+		<div class = "right">阿道夫</div>
+	</div>
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>绝对定位布局</title>
+    <style>
+	.container {
+	    position: relative;
+	}
+	.main {
+	    height: 400px;
+	    margin: 0 120px;
+	    background-color: green;
+	}
+	.left {
+	    position: absolute;
+	    width: 100px;
+	    height: 300px;
+	    left: 0;
+	    top: 0;
+	    background-color: red;
+	}
+	.right {
+	    position: absolute;
+	    width: 100px;
+	    height: 300px;
+	    background-color: blue;
+        right: 0;
+	    top: 0;
+	}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main"></div>
+	<div class="left"></div>
+	<div class="right"></div>
+    </div>
+</body>
+</html> -->
+
+
+<!-- 测试用例说明了任何BFC内部的元素是不可能逃离BFC之外显示 -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.content{
+			height: 300px;
+			width: 80%;
+			margin: auto;
+			overflow: hidden;
+			border:1px solid black;
+			/*float: left;*/
+		}
+		.part{
+			height: 100px;
+			width: 100px;
+			float: left;
+			position: relative;
+			left: -20px;
+			border:1px solid pink;
+		}
+	</style>
+</head>
+<body>
+	<div class = 'content'>
+		<div class = "part"></div>
+	</div>
+
 </body>
 </html>
