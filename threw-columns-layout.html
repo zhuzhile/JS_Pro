@@ -212,49 +212,10 @@
 </html> -->
 
 
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>绝对定位布局</title>
-    <style>
-	.container {
-	    position: relative;
-	}
-	.main {
-	    height: 400px;
-	    margin: 0 120px;
-	    background-color: green;
-	}
-	.left {
-	    position: absolute;
-	    width: 100px;
-	    height: 300px;
-	    left: 0;
-	    top: 0;
-	    background-color: red;
-	}
-	.right {
-	    position: absolute;
-	    width: 100px;
-	    height: 300px;
-	    background-color: blue;
-        right: 0;
-	    top: 0;
-	}
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="main"></div>
-	<div class="left"></div>
-	<div class="right"></div>
-    </div>
-</body>
-</html> -->
 
 
 <!-- 测试用例说明了任何BFC内部的元素是不可能逃离BFC之外显示 -->
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 	<title></title>
@@ -282,5 +243,50 @@
 		<div class = "part"></div>
 	</div>
 
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>绝对定位布局</title>
+	<style type="text/css">
+		.container{
+			position: relative;
+		}
+
+		.center{
+			margin: 0 120px;
+			height: 300px;
+			background-color: pink;
+		}
+
+		.left{
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 300px;
+			width: 100px;
+			background-color: yellow;
+
+		}
+
+		.right{
+			position: absolute;
+			right: 0;
+			top: 0;
+			height: 300px;
+			width: 100px;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class = "container">
+		<div class = "center">asdf </div>
+		<div class = "left">asdf </div>
+		<div class = "right">asfd </div>
+	</div>
 </body>
 </html>
