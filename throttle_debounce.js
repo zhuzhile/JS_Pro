@@ -90,3 +90,102 @@ function throttle(fun, delay) {
         throttleAjax(e.target.value)
     })
 
+
+
+
+function flatten(arry){
+	const result = [];
+
+	for(let i = 0,len = arry.length; i < len; i ++){
+		if(Array.isArray(arry[i])){
+			result = result.concat(flatten(arry[i]));
+		}else{
+			result.push(arry[i]);
+		}
+	}
+
+	return result;
+}
+
+
+
+function flatten(arry){
+	return arry.reduce(function(pre, cur){
+		return pre.concat(Array.isArray(cur) ? flatten(cur) : cur);
+		},[])
+}
+
+
+function flatten(arry){
+	return arry.reduce((pre, cur) => {
+		return pre.concat(Array.isArray(cur)?flatten(cur):cur);
+	},[])
+}
+
+
+
+function quickSort(arry){
+	if(arry.length <= 1){
+		return arry;
+	}
+
+	let pivotIndex = Math.floor(arry.length/2);
+	let pivot = arry.splice(pivotIndex, 1)[0];
+	let right,left = [[],[]];
+
+	for(let i = 0, len = arry.length; i < len ;i++){
+		if(arr[i] < pivot){
+			left.push(arr[i])
+		}else{
+			right.push(arr[i])
+		}		
+	}
+	return quickSort(left).concat(pivot, quickSort(right));
+}
+
+
+
+function flatten(arry){
+	let result = [];
+	for(let i = 0, len = arr.length; i < len;i++){
+		if(Array.isArray(arry[i])){
+			result = result.concat(flatten(arr[i]));
+		}else{
+			result.push(arr[i]);
+		}
+	}
+
+	return result;
+}
+
+
+function quickSort(arry){
+	if(arry.length <= 1){
+		return arry;
+	}
+	let pivot = arry.splice(Math.floor(arry.length/2), 1)[0];
+	let right = [];
+	let left = [];
+
+	for(let i = 0, len = arry.length; i < len;i++){
+		if(arr[i] < pivot){
+			left.push(arr[i]);
+		}else{
+			right.push(arr[i]);
+		}
+	}
+
+	return quickSort(left).concat(pivot, quickSort(right));
+}
+
+
+function deepClone(obj){
+	if(typeof obj !== 'object') return;
+
+	let new_obj = Array.isArray(obj) ? [] : {};
+
+	for(item of Object.keys(obj)){
+		new_obj[item] = typeof obj[item] === 'object' ? deepClone(obj[item]) : obj[item];
+	}
+
+}
