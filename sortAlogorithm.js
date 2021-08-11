@@ -42,3 +42,45 @@
 		}
 
 		console.log(mergeSort(arr));
+
+		// 插入排序
+
+		function insertSort(arr){
+			for(let i = 1, len = arr.length; i < len;i++){
+				for(let j = i; j > 0;j--){
+					if(arr[j] < arr[j-1]){
+						let tmp = arr[j];
+						arr[j] = arr[i];
+						arr[i] = tmp;
+					}else{
+						break;
+					}
+				}
+			}
+
+			return arr;
+		}
+
+		let nums = [7,2,8,9,2];
+		// shell排序（这个排序垃圾的一笔雕凿）
+
+		function shellSort(nums){
+
+			let len = nums.length;
+
+			for(let delta = Math.floor(len / 2); delta > 0;delta = Math.floor(delta / 2)){
+				for(let start = 0;start < delta;start ++){
+					for(let i = start + delta; i < len; i += delta){
+						for(let j = i; j > 0 && nums[j - delta] > nums[i];j -= delta){
+							let tmp = nums[j];
+							nums[j] = nums[j - delta];
+							nums[j - delta] = tmp;
+						}
+					}
+				}
+			}
+
+			return nums;
+		}
+
+		shellSort(arr);
