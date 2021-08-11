@@ -1,4 +1,5 @@
         // 归并排序
+        // O(nlogn)
         let len = Math.floor(Math.random()*10);
 		let arr = [];
 		for(let i = 0; i < len;i++){
@@ -44,7 +45,7 @@
 		console.log(mergeSort(arr));
 
 		// 插入排序
-
+		// O(n^2)
 		function insertSort(arr){
 			for(let i = 1, len = arr.length; i < len;i++){
 				for(let j = i; j > 0;j--){
@@ -61,9 +62,8 @@
 			return arr;
 		}
 
-		let nums = [7,2,8,9,2];
 		// shell排序（这个排序垃圾的一笔雕凿）
-
+		// O(n^2)
 		function shellSort(nums){
 
 			let len = nums.length;
