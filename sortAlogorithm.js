@@ -84,3 +84,61 @@
 		}
 
 		shellSort(arr);
+
+		function add(n, m){
+			let arr_n = [...n];
+			let arr_m = [...m];
+			let result = '';
+			let arr = Array(Math.max(n.length,m.length)).fill(0);
+
+			let max_len = Math.max(n.length, m.length);
+			let min_len = Math.min(n.length, m.length);
+
+			arr_n.reverse();
+			arr_m.reverse();
+
+			for(let i = 0; i < min_len - 1; i++){
+				arr[i] = (+ arr_n[i]) + (+arr_m[i]);
+				if(arr[i] > 10){
+					arr[i] -= 10;
+					arr[i+1] += 1 ;
+				}
+			}
+
+			arr[min_len - 1] += ((+arr_m[min_len - 1]) + (+arr_n[min_len - 1]));
+
+			let tmp = n.length > m.length ? arr_n : arr_m;
+
+			if(max_len - min_len > 0){
+				for(let i = min_len - 1; i < max_len - 1;i++){
+					if(arr[i] > 10){
+						arr[i] -= 10;
+						arr[i + 1] += 1
+					}else{
+						arr[i] = (+tmp[i]);
+					}
+				}
+			}else{
+				if(arr[min_len - 1] > 10){
+					arr[min_len - 1] -= 10;
+					arr.push(1);
+				}
+			}
+
+			arr[max_len - 1] += tmp[max_len - 1]; 
+
+			if(arr[max_len - 1] > 10){
+				arr[max_len - 1] -= 10;
+				arr.push(1);
+			}
+
+			arr.reverse();
+
+			arr.forEach(item => {
+				result += item;
+			})
+
+			return result;
+		}
+
+		console.log(add("123456","123"))

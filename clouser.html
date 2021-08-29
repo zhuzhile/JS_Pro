@@ -3,12 +3,73 @@
 <head>
 	<title></title>
 	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
+	<style type="text/css">
+		div{
+			display: flex;
+			height: 100%;
+			justify-content: center;
+			align-items: center;
+		}
+	</style>
 </head>
 <body>
 	<!-- <p id="help">Helpful notes will appear here</p>
 	<p>E-mail: <input type="text" id="email" name="email"></p>
 	<p>Name: <input type="text" id="name" name="name"></p>
 	<p>Age: <input type="text" id="age" name="age"></p> -->
-	<script  src = "test-08.js" ></script>
+
+	<div>
+		<button id = "btn"> click me!</button>
+	</div>
+	<!-- <script  src = "test-08.js" ></script> -->
+
+	<script type="text/javascript">
+		let btn = document.getElementById('btn');
+		let delay = 1000;
+
+		function doSometh(){
+			console.log("hello", arguments);
+		}
+
+		function debounce(fn, delay){
+
+			return function(){
+				clearTimeout(fn.id);
+				let context = this;
+				let arg = arguments;
+				console.log(delay);
+				fn.id = setTimeout(() => {fn.apply(context, arg)}, delay);
+			}
+		}
+
+		function throttle(fn, delay){
+			let previous = 0, now;
+
+			return function(){
+				now = + new Date();
+
+				if(now - previous > delay){
+					fn(arguments);
+					previous = now;
+				}
+			}
+		}
+
+		// function throttle(fn, delay){
+		// 	let timeout;
+
+		// 	return function(){
+		// 		if(!timeout){
+		// 		  timeout = setTimeout(() => {
+		// 		  		timeout = null;
+		// 		  		fn.apply(this)}, delay)
+		// 			};
+		// 		}		
+
+		// 	}
+
+		// btn.onclick = debounce(doSometh, delay);
+		btn.addEventListener("click", throttle(doSometh, delay));
+	</script>
 </body>
 </html>
